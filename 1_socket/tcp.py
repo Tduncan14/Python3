@@ -35,8 +35,8 @@ server_socket.listen()
 while True:
     # Accept every single connect store piece of information
     client_socket, client_addresss = server_socket.accept()
-    print(type(client_socket))
-    print(client_socket)
+    # print(type(client_socket))
+    # print(client_socket)
     print(type(client_addresss))
     print(client_addresss)
 

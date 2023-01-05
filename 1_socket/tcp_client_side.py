@@ -14,8 +14,13 @@ client_socket.connect((socket.gethostbyname(socket.gethostname()),12345))
 
 #recieve a message from the server... You must specify the max number of bytes to recieve
 
-message = client_socket.recv(1024)
+message = client_socket.recv(10)
 print(message.decode('utf-8'))
+
+
+message = client_socket.recv(10)
+print(message.decode('utf-8'))
+
 
 
 #close the client socket
