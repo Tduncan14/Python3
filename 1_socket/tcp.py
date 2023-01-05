@@ -27,3 +27,25 @@ server_socket.bind((socket.gethostbyname(socket.gethostname()), 12345))
 
 
 server_socket.listen()
+
+
+#listening forver to accept any connection
+
+
+while True:
+    # Accept every single connect store piece of information
+    client_socket, client_addresss = server_socket.accept()
+    print(type(client_socket))
+    print(client_socket)
+    print(type(client_addresss))
+    print(client_addresss)
+
+    print(f"Connected to {client_addresss} !\n")
+    #send a message to the client
+    client_socket.send("you are connected".encode("utf-8"))
+
+
+    #close the connection
+    server_socket.close()
+
+    break
