@@ -1,5 +1,6 @@
 #Tkiner intro
 import tkinter
+from tkinter import BOTH
 
 #Define the window
 
@@ -26,7 +27,16 @@ root.config(bg=root_color)
 #Define frame 
 input_frame = tkinter.LabelFrame(root, bg=input_color)
 output_frame = tkinter.LabelFrame(root,bg=output_color)
-input_frame.pack()
+input_frame.pack(pady=10)
+output_frame.pack(padx=10,pady=(0,10),fill=BOTH, expand = True)
+
+
+#Define Widgets
+
+message_entry = tkinter.Entry(input_frame, text="Enter a message", width = 30)
+send_button = tkinter.Button(input_frame, text="Send")
+
+
 
 
 
