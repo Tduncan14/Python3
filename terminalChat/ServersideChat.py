@@ -26,12 +26,41 @@ client_name_list = []
 
 def broadcast_message(message):
     ''' Send a message to all clients connected to the server'''
-    pass
+    for client_socket in client_socket_list:
+        client_socket.send(message)
 
 
 def recieve_message(client_socket):
   """ Recieve an incoming message from a specific cleint and forward the message to be broadcast"""
-  pass
+  while True:
+       try:
+           #Get the name of the given cleint
+           index = client_socket_list.index(client_socket)
+           name = client_name_list[index]
+
+           #Recieve message from the client
+           message = client_socket.recv(BYTESIZE).decode(ENCODER)
+           message = f"{name}: {message}".encode(ENCODER)
+           broadcast_message(message)
+       except:
+          # find the index of the client socket in our list
+            index = client_socket_list.index(client_socket)
+            name = client_name_list[index]
+
+         #remove the client socket and name from lists
+            client_socket_list.remove(client_socket)
+            client_name_list.remove(name)
+
+
+            #close the clieint socket
+            client_socket.close()
+
+            #Broad cast the client has left the chat
+            broadcast_message(f"{name} has left the chat".encode(ENCODER))
+            break
+
+
+         
 
 
 
@@ -55,6 +84,12 @@ def connect_client():
       print(f"Name of new client is {client_name}\n")
       client_socket.send(f"{client_name},you have connected to the server".encode(ENCODER))
       broadcast_message(f"{client_name} has joined the chat".encode(ENCODER))
+
+      #Now that a client has connected, start a thread
+      recieve_thread = threading.Thread(target=recieve_message, args=(client_socket,))
+      recieve_thread.start()
+
+
 
 
 
