@@ -1,6 +1,6 @@
 #Tkiner intro
 import tkinter
-from tkinter import BOTH, StringVar
+from tkinter import BOTH, StringVar,END
 
 
 #Define the window
@@ -23,6 +23,18 @@ root.config(bg=root_color)
 
 #define function
 
+def send_Message():
+    '''send the user message to the outputframe'''
+    message_label = tkinter.Label(output_frame, text=message_entry.get(),fg=text_color.get(),bg=output_color, font=("Helevetica",12))
+    message_label.pack()
+
+    #Clear the entry field for the next message
+    message_entry.delete(0,END)
+
+
+
+
+
 
 
 # Define GUI Layout
@@ -35,8 +47,8 @@ output_frame.pack(padx=10,pady=(0,10),fill=BOTH, expand = True)
 
 #Define Widgets
 
-message_entry = tkinter.Entry(input_frame, text="Enter a message", width = 30)
-send_button = tkinter.Button(input_frame, text="Send")
+message_entry = tkinter.Entry(input_frame, text="Enter a message", width = 25,font=('Helevtica',12))
+send_button = tkinter.Button(input_frame, text="Send",command=send_Message,bg=output_color)
 
 message_entry.grid(row=0,column=0, columnspan=3,padx=10, pady=10)
 send_button.grid(row=0,rowspan = 2,column=3,padx=10,pady=10,ipadx=20,ipady=5)
