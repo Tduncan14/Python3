@@ -1,34 +1,45 @@
 
 
-Str = "learn Python"
+# Str = "learn Python"
 
-ind = Str[0]
-
-
-print(ind)
+# ind = Str[0]
 
 
-
-Str = "python"
-print(Str.upper())
-print(len(Str))
+# print(ind)
 
 
 
-num = 119
-
-list1 = [ 1,2,3,4,5 ,'python']
-
-print(list1[5],'this the 6th index')
+# Str = "python"
+# print(Str.upper())
+# print(len(Str))
 
 
 
-odd = [1,2,3,5]
-evn = [0,2,4,6]
+# num = 119
+
+# list1 = [ 1,2,3,4,5 ,'python']
+
+# print(list1[5],'this the 6th index')
 
 
-num = [ odd, evn]
 
-num.sort()
+# odd = [1,2,3,5]
+# evn = [0,2,4,6]
 
-print(num)
+
+# num = [ odd, evn]
+
+# num.sort()
+
+# print(num)
+
+
+# for num in range(2,5):
+#     print(num)
+#     print('Loop')
+
+
+
+for n in [1,2,3]:
+    for m in [ 1,2,3]:
+        print(n,m)
